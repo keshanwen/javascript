@@ -1,0 +1,35 @@
+<!--index.wxml-->
+<!-- wxml 与组件之间的关系，就相当于HTML与标签 -->
+<!-- wxml是框架设计的一套标签语言，wxml中展示内容的具体标签，我们称为组件 -->
+<!-- wxml相当于小程序中的模板引擎，数据绑定，数据展示（条件渲染，列表渲染） -->
+<!-- view 类此于 div -->
+<view class="container">
+  <!-- 展示用户信息 -->
+  <!-- ？一进来就可以获取用户信息吗？ -->
+  <open-data type="userAvatarUrl"></open-data>
+  <open-data type="userNickName"></open-data>
+  <view class="userinfo">
+    <block wx:if="{{canIUseOpenData}}">
+      <view class="userinfo-avatar" bindtap="bindViewTap">
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+      <open-data type="userNickName"></open-data>
+    </block>
+    <block wx:elif="{{!hasUserInfo}}">
+      <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
+      <button wx:elif="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+      <view wx:else> 请使用1.4.4及以上版本基础库 </view>
+    </block>
+    <block wx:else>
+      <!--  图片高度自适应属性 mode="widthFix" -->
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>
+  <view class="px-text"></view>  
+  <view class="text-wrap">
+  </view>
+</view>

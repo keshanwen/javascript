@@ -1,0 +1,8 @@
+<!--pages/userInfo/userInfo.wxml-->
+<!-- block相当于template -->
+<block></block>
+<!-- 说好的弹框呢？怎么不出现了 -->
+<button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">点我授权</button>
+<open-data type="userAvatarUrl"></open-data>
+<open-data type="userNickName"></open-data>
+<view bindtap="toOther">跳转</view>

@@ -1,0 +1,36 @@
+/**index.wxss**/
+/* 设置页面背景颜色 */
+page {
+  background: #aaa;
+}
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #aaa;
+}
+
+.userinfo-avatar {
+  overflow: hidden;
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+
+/* 在 iphoe6 dpr2 的情况下 1px = 2rpx 所以在ui出图时让按照iphohe6的标注出图，方便前端用rpx单位 */
+.px-text {
+  width: 100px;
+  height: 100px;
+  background:blue;
+}
+
+.text-wrap {
+  width: 200rpx;
+  height: 200rpx;
+  background: red;
+}
