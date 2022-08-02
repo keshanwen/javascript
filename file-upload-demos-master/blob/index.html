@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+
+
+/*
+var htmlParts = ["<a id=\"a\"><b id=\"b\">hey!<\/b><\/a>"];
+var myBlob = new Blob(htmlParts, { "type" : "text\/xml" });
+
+console.log(myBlob)
+*/
+
+let blob = new Blob(['hello wrold i am demo'])
+
+let a = document.createElement("a")
+a.href = window.URL.createObjectURL(blob)
+a.download = 'hello-world.txt'
+a.textContent = 'Download Hello World'
+
+document.body.appendChild(a)
+</script>

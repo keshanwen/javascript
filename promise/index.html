@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+
+
+async function foo() {
+    return 2
+}
+
+foo().then( (res) => {
+    console.log(res)
+})
+
+
+async function foo() {
+    console.log(1)
+    let a = await 100
+    console.log(a)
+    console.log(2)
+}
+console.log(0)
+foo()
+console.log(3)
+
+/*
+async function foo() {
+    console.log('foo') // 5>>3
+}
+async function bar() {
+    console.log('bar start') // 2>>2
+    await foo()
+    console.log('bar end') // 6>>6
+}
+console.log('script start')  // 1>>1
+setTimeout(function () {
+    console.log('setTimeout') // 8>>8
+}, 0)
+bar();
+new Promise(function (resolve) {
+    console.log('promise executor') // 3>>4
+    resolve();
+}).then(function () {
+    console.log('promise then') // 7>>7
+})
+console.log('script end') // 4>>5
+*/
+
+</script>

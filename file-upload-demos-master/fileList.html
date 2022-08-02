@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="file" id="myfiles" multiple>
+</body>
+</html>
+<script>
+
+
+
+
+const pullfiels = () => {
+    let fileInput = document.querySelector("#myfiles")
+    /*
+        所有type属性为file的input 元素都有一个 files 属性，用来存储用户所选择的文件
+    */ 
+    let files = fileInput.files
+    // 获取所选文件数量
+    let f1 = files.length
+    let i = 0
+
+    while( i < f1 ) {
+        // 取得一个文件
+        // file = files.item(i);
+        let file = files[i]
+        console.log(file,'i~~~~~~~~')
+        i++
+    }
+}
+
+document.querySelector("#myfiles").onchange = pullfiels
+
+
+
+
+
+
+
+</script>
