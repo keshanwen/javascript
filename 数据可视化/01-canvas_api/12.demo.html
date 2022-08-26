@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrap {
+            position: relative;
+            height: 200px;
+            border: 1px dashed yellowgreen;
+        }
+        .item1 {
+            position: absolute;
+            /* border: 1px solid black; */
+        }
+        .item2 {
+            position: absolute;
+            /* border: 1px solid black;  */
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <canvas id="canvas1" width="200" height="200" class="item1"></canvas>
+        <canvas id="canvas2" width="200" height="200" class="item2"></canvas>
+    </div>
+</body>
+</html>
+<script>
+
+  const canvas = document.getElementById('canvas1')
+  const ctx = canvas.getContext('2d')
+
+  ctx.beginPath()
+  ctx.lineWidth = 1
+  ctx.strokeStyle = 'black'
+  // 起点  终点  中间点
+  ctx.moveTo(0, 0)
+  ctx.lineTo(200, 200)
+  ctx.lineTo(200, 100)
+  ctx.lineTo(0,0)
+//   ctx.translate(84,80)
+//   ctx.rotate((Math.PI / 180)*30)
+  ctx.stroke()
+  ctx.clip()
+  ctx.fillStyle = 'black'
+  ctx.strokeStyle = "black"
+  ctx.font = 'bold 20px 微软雅黑'
+  ctx.textAlign = 'left' // left right start end center 
+  ctx.textBaseline = "bottom"
+//   ctx.rotate((Math.PI / 180)*30)
+    ctx.translate(84, 80);
+        ctx.rotate(30 * Math.PI / 180);
+  ctx.fillText('我是苹果,我喜欢吃苹果', 0, 0)
+
+// ctx.fillText('我是苹果,我喜欢吃苹果', 84, 20)
+
+  ctx.closePath()
+
+
+
+    /*********************************************************************************************************/ 
+  const canvas2 = document.getElementById('canvas2')
+  const ctx2 = canvas2.getContext('2d')
+
+  ctx2.beginPath()
+  ctx2.lineWidth = 1
+  ctx2.strokeStyle = 'black'
+  // 起点  终点  中间点
+  ctx2.moveTo(0, 0)
+  // ctx2.lineTo(200, 100)
+  // ctx2.lineTo(200,0)
+  // ctx2.lineTo(0,0)
+  // ctx2.stroke()
+  // ctx2.clip()
+  // ctx2.fillStyle = 'black'
+  // ctx2.strokeStyle = "black"
+  // ctx2.font = 'bold 20px 微软雅黑'
+  // ctx2.textAlign = 'left' // left right start end center 
+  // ctx2.textBaseline = "bottom"
+  // ctx2.fillText('我是苹果,我喜欢吃苹果', 80, 40)
+  ctx2.closePath()
+
+
+
+
+
+</script>

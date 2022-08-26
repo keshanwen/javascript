@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+
+        #myCanvas {
+            /* width: 800px;
+            height: 600px; */
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <!-- 1，创建canvas 元素 -->
+        <canvas id="myCanvas" style="border: 1px solid #ccc;"></canvas>
+    </div>
+</body>
+</html>
+<script>
+/*
+    1, 动态设置宽高 ?
+
+*/ 
+
+
+// 2,获取cavans 环境
+const myCanvas = document.getElementById('myCanvas')
+
+// 3,获取 cavans 上下文环境
+const ctx = myCanvas.getContext('2d')
+
+
+// 4, 绘制图形
+// ctx.moveTo(100,100) // 起点坐标
+// ctx.lineTo(200,100) // 终点坐标
+// ctx.stroke() // 将起点和终点连接起来
+
+// ctx.moveTo(20,100)
+// ctx.lineTo(200,100)
+// ctx.stroke()
+
+// ctx.moveTo(20,120.5)
+// ctx.lineTo(200,120.5)
+// ctx.stroke()
+
+ctx.moveTo(50,50)
+ctx.lineTo(200,50)
+
+// 修改直线的宽度
+ctx.lineWidth = 20
+
+// 修改直线颜色
+ctx.strokeStyle = 'pink'
+
+// 修改直线两端样式
+ctx.lineCap = 'round'
+
+ctx.stroke()
+
+</script>

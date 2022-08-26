@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="300" height="300" style="border:1px solid #d3d3d3;"></canvas>
+</body>
+</html>
+<script>
+
+var c=document.getElementById("myCanvas");
+
+var ctx=c.getContext("2d");
+
+ctx.font="16px Arial";
+
+
+
+// ctx.rotate(45*Math.PI/180);
+
+// ctx.fillText("我是水果",50,50);
+
+// // ctx.clearRect(0,0,300,300)
+
+// ctx.fillText("我是蔬菜",100,10);
+ctx.lineWidth = 1
+  ctx.strokeStyle = '#orange'
+  ctx.textAlign = 'left' // left right start end center 
+  ctx.textBaseline = "bottom"  // top bottom middle
+
+//   ctx.save();
+// ctx.beginPath()
+
+//   ctx.moveTo(0, 0)
+//   ctx.lineTo(100, 300)
+//   ctx.lineTo(0, 300)
+
+//   ctx.lineTo(0,0)
+//   ctx.clip();
+//   ctx.stroke();
+ 
+//   ctx.fillText("苹果我喜欢吃",0,100);
+
+//   ctx.closePath()
+//   ctx.restore()
+    // ***************************************************
+
+  // var ctx2 = c.getContext("2d");
+// ctx.save()
+// ctx.beginPath()
+
+//   ctx.moveTo(0, 0)
+//   ctx.lineTo(100, 0)
+//   ctx.lineTo(100,300)
+//   ctx.lineTo(0,0)
+//   ctx.clip()
+//   ctx.fillText('我喜欢吃水果', 50, 150)
+//   // ctx2.lineTo(0, 300)
+
+//   // ctx2.lineTo(0,0)
+
+//   ctx.stroke();
+//   ctx.restore()
+ // ***************************************************
+
+ ctx.save()
+ ctx.strokeStyle = 'hotpink';
+ ctx.beginPath()
+ ctx.moveTo(0,0)
+//  ctx.lineTo(300,150)
+//  ctx.lineTo(300,0)
+ ctx.lineTo(0,0)
+ ctx.stroke()
+// ctx.clip()
+ctx.translate(50, 50);
+// ctx.rotate(30 * (Math.PI / 180));
+ ctx.fillText('111我喜欢吃水果', 40, 0)
+
+ ctx.restore()
+
+
+//  ***********************
+
+// ctx.save()
+
+// ctx.beginPath()
+// ctx.moveTo(0,0)
+// ctx.lineTo(150,300)
+// ctx.lineTo(300,300)
+// ctx.lineTo(300,150)
+// ctx.lineTo(0,0)
+// ctx.stroke()
+// ctx.clip()
+// ctx.translate(80, 150);
+// ctx.rotate(30 * Math.PI / 180);
+// ctx.fillText('22222我喜欢吃水果', 0, 0)
+
+// ctx.restore()
+
+// ***************************
+
+// ctx.save()
+
+// ctx.beginPath()
+// ctx.moveTo(0,0)
+// ctx.lineTo(150,300)
+// ctx.lineTo(0,300)
+// ctx.lineTo(0,0)
+// ctx.stroke()
+// ctx.clip()
+// ctx.fillText('3333我喜欢吃水果', 20, 200)
+
+// ctx.restore()
+
+
+
+
+
+
+</script>
