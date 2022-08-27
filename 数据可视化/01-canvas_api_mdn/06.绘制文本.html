@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #canvas {
+            border: 1px solid red;
+        }
+
+
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="300" height="150"></canvas>
+</body>
+</html>
+<script>
+    function draw() {
+        let canvas = document.getElementById("canvas")
+
+
+        if (canvas.getContext) {
+            let ctx = canvas.getContext('2d')
+            ctx.font = "24px serif";
+            ctx.beginPath()
+            ctx.moveTo(150,0)
+            ctx.lineTo(150,150)
+         
+            ctx.moveTo(0,75)
+            ctx.lineTo(300,75)
+            ctx.stroke()
+
+            ctx.textAlign = 'center'
+            ctx.textBaseline = 'middle'
+          
+            // ctx.fillText('Hello wrold',10,50)
+            ctx.strokeText('hello kebi', 150, 75)
+
+            let content = ctx.measureText('hello wrold')
+            console.log(content.width, ' width ~~~~')
+            
+        }
+    }
+
+    draw()
+
+
+</script>

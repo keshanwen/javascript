@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas {
+          display: block;
+          margin: 40px auto 0;
+          border: 1px solid sienna;
+        }
+      </style>
+</head>
+<body>
+    <canvas id="canvas" width="600" height="400">您的浏览器不支持 canvas</canvas>
+</body>
+</html>
+<script>
+
+    const canvas = document.getElementById('canvas')
+    const ctx = canvas.getContext('2d')
+
+    const drawCircle = (x,y,r) => {
+        ctx.beginPath()
+        ctx.fillStyle = 'orange'
+        ctx.arc(x,y,r,0, Math.PI * 2)
+        ctx.fill()
+        ctx.closePath()
+    }
+
+    let x = y = 100
+    const r = 20
+    let xSpeed = 6
+    let ySpeed = 4
+
+    drawCircle(x,y,r)
+
+    setInterval(() => {
+        ctx.clearRect(0,0,600,400)
+        if (x - r <= 0 || x + r >= 600) {
+            xSpeed = -xSpeed
+        }
+        if (y - r <= 0 || y + r >= 400) {
+            ySpeed = -ySpeed
+        }
+        x += xSpeed
+        y += ySpeed
+        drawCircle(x,y,r)
+    }, 20);
+
+
+
+</script>

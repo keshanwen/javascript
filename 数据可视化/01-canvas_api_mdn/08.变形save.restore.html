@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #canvas {
+            border: 1px solid red;
+        }
+
+
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="300" height="150"></canvas>
+</body>
+</html>
+<script>
+    function draw() {
+        let canvas = document.getElementById("canvas")
+
+
+        if (canvas.getContext) {
+            let ctx = canvas.getContext('2d')
+            ctx.fillRect(0,0,150,150)
+            ctx.save()
+
+            ctx.fillStyle = '#09F'  
+            ctx.fillRect(15,15,120,120);
+
+            ctx.save()
+            ctx.fillStyle = '#FFF'       
+            ctx.globalAlpha = 0.5;
+            ctx.fillRect(30,30,90,90);   
+
+            ctx.restore()
+            ctx.fillRect(45,45,60,60);   // 使用上一次的配置绘制一个矩形
+
+            ctx.restore()
+            ctx.fillRect(60,60,30,30);   // 使用加载的配置绘制一个矩形
+         
+        }
+    }
+
+    draw()
+
+
+</script>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #canvas {
+            border: 1px solid red;
+        }
+
+
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="150" height="150"></canvas>
+</body>
+</html>
+<script>
+    function draw() {
+        let canvas = document.getElementById("canvas")
+
+        /*
+            首先，你需要创建路径起始点。
+            然后你使用画图命令去画出路径。
+            之后你把路径封闭。
+            一旦路径生成，你就能通过描边或填充路径区域来渲染图形。 
+        */ 
+        if (canvas.getContext) {
+            let ctx = canvas.getContext('2d')
+            
+            // 描述一个三角形
+            // ctx.beginPath()
+            // ctx.moveTo(10,10)
+            // ctx.lineTo(100,75)
+            // ctx.lineTo(100,25)
+            // ctx.fill()
+
+            // ctx.beginPath();
+            // ctx.arc(75, 75, 50, 0, Math.PI * 2, true); // 绘制
+            // ctx.moveTo(110, 75);
+            // ctx.arc(75, 75, 35, 0, Math.PI, false);   // 口 (顺时针)
+            // ctx.moveTo(65, 65);
+            // ctx.arc(60, 65, 5, 0, Math.PI * 2, true);  // 左眼
+            // ctx.moveTo(95, 65);
+            // ctx.arc(90, 65, 5, 0, Math.PI * 2, true);  // 右眼
+            // ctx.stroke();
+
+            ctx.beginPath()
+            ctx.moveTo(10,10)
+            ctx.lineTo(100,100)
+            ctx.lineTo(40,100)
+            ctx.closePath()
+            ctx.stroke()
+          
+        }
+    }
+
+    draw()
+
+
+</script>
