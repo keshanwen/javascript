@@ -72,3 +72,44 @@ export function drawAxis() {
     }
     ctx.restore()
   }
+  
+  export function drawBrokenLine(speed) {
+    const defaultParam = this.defaultParam
+    const ctx = this.ctx
+    const bottomPad = 30
+    const data = defaultParam.data
+    const ht = defaultParam.ht
+    const maxPoint = defaultParam.maxPoint
+    const len = data.length - 1
+    const stepDots = Math.floor(speed * len)
+  
+    // 绘制线条 
+    ctx.save()
+    ctx.beginPath()
+    ctx.setLineDash([4, 4])
+    ctx.lineWidth = defaultParam.lineWidth
+    ctx.strokeStyle = defaultParam.styles.lineColor
+    for (let i = 0; i < len; i++) {
+      // 起点 
+      const yVal = data[i].yVal
+      const axisY = ht - ht * (yVal / maxPoint) - bottomPad
+      const averageNum = defaultParam.wid / data.length - 1
+      const axisX = i * averageNum + defaultParam.x
+  
+      // 终点 
+      let axisEndX = (i + 1) * averageNum + defaultParam.x
+      let axisEndY = ht - ht * (data[i + 1].yVal) / maxPoint - bottomPad
+  
+      if (i <= stepDots) {
+        if (i === stepDots) {
+          axisEndX = (axisEndX - axisX) * speed + axisX
+          axisEndY = (axisEndY - axisY) * speed + axisY
+        }
+        ctx.moveTo(axisX, axisY)
+        ctx.lineTo(axisEndX, axisEndY)
+      }
+    }
+    ctx.stroke()
+    ctx.closePath()
+    ctx.restore()
+  }
