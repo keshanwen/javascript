@@ -56,7 +56,7 @@ class MyCharts {
           startAngle: 0,
           endAngle: 2 * Math.PI,
           arcWidth: 18,
-          target: 50
+          target: 60
         }
         this.circleConfig = utils.extendsObj(this.defaultConfig, circleConfig)
         myAnimation.call(this, {
