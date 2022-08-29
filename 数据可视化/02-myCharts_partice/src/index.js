@@ -1,3 +1,8 @@
 import '../css/main.css'
+import MyCharts from './charts'
 
-console.log(1111)
+new MyCharts({
+  select: '#box1',
+  ratio: 1.5,
+  type: 'cirque'
+})
