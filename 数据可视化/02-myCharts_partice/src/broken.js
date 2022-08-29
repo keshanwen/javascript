@@ -31,3 +31,44 @@ export function drawAxis() {
   
     ctx.restore()
   }
+  
+  export function drawPoint(speed) {
+    const defaultParam = this.defaultParam
+    const ctx = this.ctx
+    const data = defaultParam.data
+    const len = data.length
+    const ht = defaultParam.ht
+  
+    // 计算
+    ctx.save()
+    ctx.lineWidth = 2
+    for (let i = 0; i < len; i++) {
+      let yVal = parseInt(data[i].yVal * speed)
+      let tranY = ht - ht * yVal / defaultParam.maxPoint - 30
+      let tranX = i * (defaultParam.wid / len - 1) + defaultParam.x
+  
+      // 绘制图形
+      ctx.beginPath()
+      ctx.shadowOffsetX = 0
+      ctx.shadowOffsetY = 0
+      ctx.shadowBlur = 3
+      ctx.shadowColor = defaultParam.styles.pointColor
+      ctx.fillStyle = defaultParam.styles.pointColor
+      ctx.strokeStyle = '#fff'
+      ctx.arc(tranX, tranY, 6, 0, 2 * Math.PI, false)
+      ctx.fill()
+      ctx.stroke()
+      ctx.closePath()
+  
+      // 绘制圆形对应的数值
+      ctx.beginPath()
+      ctx.shadowBlur = 0
+      ctx.fillStyle = '#333'
+      ctx.textAlign = 'center'
+      ctx.font = defaultParam.fontSize + ' MicroSoft YaHei'
+      ctx.fillText(yVal, tranX, tranY - 10)
+      ctx.closePath()
+  
+    }
+    ctx.restore()
+  }
