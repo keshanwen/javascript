@@ -1,4 +1,5 @@
 import utils from './utils'
+import myAnimation from './myAnimation'
 
 class MyCharts {
   constructor(defaultParam) {
@@ -48,6 +49,12 @@ class MyCharts {
     switch (this.defaultParam.type) {
       case 'cirque':
         console.log('绘制圆环')
+        myAnimation.call(this, {
+          percent: 100,
+          render: (current) => {
+            console.log(current)
+          }
+        })
         break
       default:
         console.log('无此功能的绘制')
