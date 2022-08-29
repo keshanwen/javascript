@@ -1,6 +1,7 @@
 import utils from './utils'
 import Cirque from './cirque'
 import myAnimation from './myAnimation'
+import { drawAxis } from './broken'
 
 class MyCharts {
   constructor(defaultParam) {
@@ -66,6 +67,15 @@ class MyCharts {
           }
         })
         break
+      case 'line':
+        myAnimation.call(this, {
+          percent: 200,
+          render: (current) => {
+            // 绘制坐标系
+            drawAxis.call(this)
+          }
+        })
+        break;  
       default:
         console.log('无此功能的绘制')
     }
