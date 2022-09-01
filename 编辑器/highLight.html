@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Highlight</title>
+  <style>
+    .custom-info { color: #808080 }
+    .custom-error { color: #ff0000; font-style: bold; }
+    .custom-notice { color: #FFA500; }
+    .custom-date { color: #008800; }
+  </style>
+</head>
+
+<body>
+  <div id="log-editor">
+
+  </div>
+  <script>
+    const tokenizer = {
+      root: [
+        [/\[error.*/, "custom-error"],
+        [/\[notice.*/, "custom-notice"],
+        [/\[info.*/, "custom-info"],
+        [/\[[a-zA-Z 0-9:]+\]/, "custom-date"],
+      ]
+    }
+    const highlight = (str) => {
+      return tokenizer.root.reduce((pre, current) => {
+        return pre.replace(current[0], (m) => {
+          return `<span class="${current[1]}">${m}</span>`
+        });
+      }, str);
+    };
+
+    const log = `
+[Sun Mar 7 16:02:00 2004] [notice] Apache/1.3.29 (Unix) configured -- resuming normal operations
+[Sun Mar 7 16:02:00 2004] [info] Server built: Feb 27 2004 13:56:37
+[Sun Mar 7 16:02:00 2004] [notice] Accept mutex: sysvsem (Default: sysvsem)
+[Sun Mar 7 16:05:49 2004] [info] [client xx.xx.xx.xx] (104)Connection reset by peer: client stopped connection before send body completed
+[Sun Mar 7 21:16:17 2004] [error] [client xx.xx.xx.xx] File does not exist: /home/httpd/twiki/view/Main/WebHome
+[Sun Mar 7 21:20:14 2004] [info] [client xx.xx.xx.xx] (104)Connection reset by peer: client stopped connection before send body completed
+`
+    const innerHtml = log.split('\n').reduce((pre, current) => {
+      return pre + `<div class="line">${highlight(current)}</div>`;
+    }, '')
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const wrapper = document.querySelector('#log-editor')
+      wrapper.innerHTML = innerHtml;
+    })
+  </script>
+</body>
+
+</html>
