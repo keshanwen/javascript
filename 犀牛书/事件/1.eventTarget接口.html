@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="para"></div>
+  </body>
+</html>
+<script>
+  /* 
+
+    事件的本质是程序各个组成部分之间的一种通信方式， 也是异步编程的一种实现。
+
+
+*/
+
+  /* 
+
+    DOM 节点如何监听事件？
+
+    addEventListener()：绑定事件的监听函数
+    removeEventListener()：移除事件的监听函数
+    dispatchEvent()：触发事件
+
+    https://developer.mozilla.org/zh-CN/docs/Web/API/Event/Event
+    https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/dispatchEvent
+    https://wangdoc.com/javascript/events/eventtarget
+
+*/
+
+  function hello(e) {
+    // e.preventDefault();
+    // console.log(e, "this~~~");
+  }
+
+  para.addEventListener(
+    "click",
+    // hello,
+    function (e) {
+      // e.preventDefault();
+      console.log("click 1");
+    },
+    false
+  );
+
+  para.addEventListener(
+    "click",
+    hello,
+    // function (e) {
+    //   e.preventDefault();
+    //   console.log("click 2");
+    // },
+    false
+  );
+
+  var event = new Event("click", {
+    cancelable: true,
+  });
+
+  var canceled = !para.dispatchEvent(event); // 该方法返回一个布尔值，只要有一个监听函数调用了Event.preventDefault()，则返回值为false，否则为true。
+
+  if (canceled) {
+    console.log("事件取消");
+  } else {
+    console.log("事件未取消");
+  }
+</script>
