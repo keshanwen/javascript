@@ -25,6 +25,9 @@
     removeEventListener()：移除事件的监听函数
     dispatchEvent()：触发事件
 
+    和经由浏览器触发，并通过事件循环异步调用事件处理程序的“原生”事件不同，dispatchEvent() 会同步调用事件处理函数。
+    在 dispatchEvent() 返回之前，所有监听该事件的事件处理程序将在代码继续前执行并返回。
+
     https://developer.mozilla.org/zh-CN/docs/Web/API/Event/Event
     https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/dispatchEvent
     https://wangdoc.com/javascript/events/eventtarget
