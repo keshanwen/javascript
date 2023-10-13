@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <p>点击</p>
+    </div>
+  </body>
+</html>
+<script>
+  var phases = {
+    1: 'capture',
+    2: 'target',
+    3: 'bubble',
+  };
+
+  var div = document.querySelector('div');
+  var p = document.querySelector('p');
+
+  div.addEventListener('click', callback, true); //  捕获
+  p.addEventListener('click', callback, true); // 捕获
+  div.addEventListener('click', callback, false); // 冒
+  p.addEventListener('click', callback, false); // 冒
+
+  function callback(event) {
+    var tag = event.currentTarget.tagName;
+    var phase = phases[event.eventPhase];
+    console.log("Tag: '" + tag + "'. EventPhase: '" + phase + "'");
+  }
+
+  // 点击以后的结果
+  // Tag: 'DIV'. EventPhase: 'capture'
+  // Tag: 'P'. EventPhase: 'target'
+  // Tag: 'P'. EventPhase: 'target'
+  // Tag: 'DIV'. EventPhase: 'bubble
+</script>
