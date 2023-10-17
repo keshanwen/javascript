@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="checkbox">hello wrold</div>
+</body>
+</html>
+<script>
+
+
+  checkbox.addEventListener('click', () => {
+    console.log('click~~~~~~~~')
+  })
+
+  function simulateClick() {
+      var event = new MouseEvent('click', {
+        'bubbles': true,
+        'cancelable': true
+      });
+      var cb = document.getElementById('checkbox');
+      cb.dispatchEvent(event);
+    }
+
+    simulateClick()
+</script>

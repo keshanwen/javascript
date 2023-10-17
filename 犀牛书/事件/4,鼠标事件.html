@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul>
+    <li>item 1</li>
+    <li>item 2</li>
+    <li>item 3</li>
+  </ul>
+</body>
+</html>
+<script>
+
+  var ul = document.querySelector('ul');
+
+  // 进入 ul 节点以后，mouseenter 事件只会触发一次
+  // 以后只要鼠标在节点内移动，都不会再触发这个事件
+  // event.target 是 ul 节点
+  ul.addEventListener('mouseenter', function (event) {
+    event.target.style.color = 'purple';
+    setTimeout(function () {
+      event.target.style.color = '';
+    }, 500);
+  }, false);
+
+  // 进入 ul 节点以后，只要在子节点上移动，mouseover 事件会触发多次
+  // event.target 是 li 节点
+  ul.addEventListener('mouseover', function (event) {
+    event.target.style.color = 'orange';
+    setTimeout(function () {
+      event.target.style.color = '';
+    }, 500);
+  }, false);
+
+
+
+</script>

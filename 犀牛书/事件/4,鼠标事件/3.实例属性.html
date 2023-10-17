@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+
+ body {
+  /* height: 100vh; */
+  height: 2000px;
+  padding: 0;
+  margin: 0;
+ }
+  p {
+      width: 100px;
+      height: 100px;
+      padding: 100px;
+      border: 1px solid red;
+    }
+  </style>
+</head>
+<body onmousedown="showCoords(event)">
+  <!-- <button onmouseup="whichButton(event)">hello wrold</button> -->
+  <!-- <p>Hello</p> -->
+  <div id="outer" style="height:50px;width:50px;border:1px solid black;">
+    <div id="inner" style="height:25px;width:25px;border:1px solid black;"></div>
+  </div>
+</body>
+</html>
+<script>
+  // offset：偏移；client：客户；page：页面；screen：屏幕；
+
+  // function showKey(e) {
+  //   console.log('ALT key pressed: ' + e.altKey);
+  //   console.log('CTRL key pressed: ' + e.ctrlKey);
+  //   console.log('META key pressed: ' + e.metaKey);
+  //   console.log('SHIFT key pressed: ' + e.shiftKey);
+  // }
+
+
+/*   var whichButton = function (e) {
+      console.log(e.button, 'e.buuton~~~~~')
+      switch (e.button) {
+        case 0:
+          console.log('Left button clicked.');
+          break;
+        case 1:
+          console.log('Middle button clicked.');
+          break;
+        case 2:
+          console.log('Right button clicked.');
+          break;
+        default:
+          console.log('Unexpected code: ' + e.button);
+      }
+    } */
+
+    function showCoords(evt) {
+      /*
+        MouseEvent.clientX属性返回鼠标位置相对于浏览器窗口左上角的水平坐标（单位像素），MouseEvent.clientY属性返回垂直坐标。这两个属性都是只读属性。
+        这两个属性还分别有一个别名MouseEvent.x和MouseEvent.y。
+      */
+  /*    console.log(
+        'clientX value: ' + evt.clientX + '\n' +
+        'clientY value: ' + evt.clientY + '\n'
+      );
+      console.log(evt.x, evt.y) */
+
+      /*
+
+        MouseEvent.movementX，MouseEvent.movementY
+        MouseEvent.movementX属性返回当前位置与上一个mousemove事件之间的水平距离（单位像素）。数值上，它等于下面的计算公式。
+        currentEvent.movementX = currentEvent.screenX - previousEvent.screenX
+        currentEvent.movementY = currentEvent.screenY - previousEvent.screenY。
+
+      */
+
+     /*  MouseEvent.screenX属性返回鼠标位置相对于屏幕左上角的水平坐标（单位像素），MouseEvent.screenY属性返回垂直坐标。这两个属性都是只读属性。 */
+     /*  console.log(
+        'screenX value: ' + evt.screenX + '\n',
+        'screenY value: ' + evt.screenY + '\n'
+      ); */
+  }
+
+
+  // var p = document.querySelector('p');
+  //   p.addEventListener(
+  //     'click',
+  //     function (e) {
+  //       /*
+  //         MouseEvent.offsetX属性返回鼠标位置与目标节点左侧的padding边缘的水平距离（单位像素），
+  //         MouseEvent.offsetY属性返回与目标节点上方的padding边缘的垂直距离。这两个属性都是只读属性。
+  //       */
+  //       console.log(e.offsetX);
+  //       console.log(e.offsetY);
+  //     },
+  //     false
+  //   );
+
+  // document.body.addEventListener(
+  //     'click',
+  //     function (e) {
+  //       /*
+  //       MouseEvent.pageX属性返回鼠标位置与文档左侧边缘的距离（单位像素），
+  //       MouseEvent.pageY属性返回与文档上侧边缘的距离（单位像素）。它们的返回值都包括文档不可见的部分。这两个属性都是只读。
+
+  //       */
+  //       console.log(e.pageX);
+  //       console.log(e.pageY);
+  //     },
+  //     false
+  //   );
+
+/*   var inner = document.getElementById('inner');
+    inner.addEventListener('mouseover', function (event) {
+      console.log('进入' + event.target.id + ' 离开' + event.relatedTarget.id);
+    }, false);
+    inner.addEventListener('mouseenter', function (event) {
+      console.log('进入' + event.target.id + ' 离开' + event.relatedTarget.id);
+    });
+    inner.addEventListener('mouseout', function (event) {
+      console.log('离开' + event.target.id + ' 进入' + event.relatedTarget.id);
+    });
+    inner.addEventListener("mouseleave", function (event) {
+      console.log('离开' + event.target.id + ' 进入' + event.relatedTarget.id);
+    }); */
+
+    // document.addEventListener('click', function (e) {
+    //    // MouseEvent.getModifierState方法返回一个布尔值，表示有没有按下特定的功能键。
+    //     console.log(e.getModifierState('CapsLock'));
+    //   }, false);
+</script>
