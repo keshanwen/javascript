@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+  /*
+  进度事件用来描述资源加载的进度，主要由 AJAX 请求、<img>、<audio>、<video>、<style>、<link>等外部资源的加载触发，继承了ProgressEvent接口。它主要包含以下几种事件。
+
+  abort：外部资源中止加载时（比如用户取消）触发。如果发生错误导致中止，不会触发该事件。
+  error：由于错误导致外部资源无法加载时触发。
+  load：外部资源加载成功时触发。
+  loadstart：外部资源开始加载时触发。
+  loadend：外部资源停止加载时触发，发生顺序排在error、abort、load等事件的后面。
+  progress：外部资源加载过程中不断触发。
+  timeout：加载超时时触发。
+  注意，除了资源下载，文件上传也存在这些事件。
+*/
+
+
+
+
+</script>
+<script>
+
+  /*
+    lengthComputable：布尔值，表示加载的总量是否可以计算，默认是false。
+    loaded：整数，表示已经加载的量，默认是0。
+    total：整数，表示需要加载的总量，默认是0。
+  */
+
+/*   var p = new ProgressEvent('load', {
+    lengthComputable: true,
+    loaded: 30,
+    total: 100,
+  });
+
+  document.body.addEventListener('load', function (e) {
+    console.log('已经加载：' + (e.loaded / e.total) * 100 + '%');
+  });
+
+  document.body.dispatchEvent(p);
+  // 已经加载：30%
+ */
+
+ var xhr = new XMLHttpRequest();
+
+  xhr.addEventListener('progress', updateProgress, false);
+  xhr.addEventListener('load', transferComplete, false);
+  xhr.addEventListener('error', transferFailed, false);
+  xhr.addEventListener('abort', transferCanceled, false);
+
+  xhr.open();
+
+  function updateProgress(e) {
+    if (e.lengthComputable) {
+      var percentComplete = e.loaded / e.total;
+    } else {
+      console.log('不能计算进度');
+    }
+  }
+
+  function transferComplete(e) {
+    console.log('传输结束');
+  }
+
+  function transferFailed(evt) {
+    console.log('传输过程中发生错误');
+  }
+
+  function transferCanceled(evt) {
+    console.log('用户取消了传输');
+  }
+
+
+  // 上传过程的进度事件
+ /*  var xhr = new XMLHttpRequest();
+
+  xhr.upload.addEventListener('progress', updateProgress, false);
+  xhr.upload.addEventListener('load', transferComplete, false);
+  xhr.upload.addEventListener('error', transferFailed, false);
+  xhr.upload.addEventListener('abort', transferCanceled, false);
+
+  xhr.open(); */
+
+</script>
