@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+  function showChar(e) {
+
+    // 以下属性都是只读属性，返回一个布尔值，表示是否按下对应的键。
+   /*  console.log('ALT: ' + e.altKey);
+    console.log('CTRL: ' + e.ctrlKey);
+    console.log('Meta: ' + e.metaKey);
+    console.log('Shift: ' + e.shiftKey); */
+
+    // KeyboardEvent.code属性返回一个字符串，表示当前按下的键的字符串形式。该属性只读。
+    /*   console.log(e.code) */
+
+    // KeyboardEvent.key属性返回一个字符串，表示按下的键名。该属性只读。
+    // console.log(e.key)
+
+    // KeyboardEvent.location属性返回一个整数，表示按下的键处在键盘的哪一个区域。它可能取以下值。
+    // console.log(e.location)
+
+    // KeyboardEvent.repeat返回一个布尔值，代表该键是否被按着不放，以便判断是否重复这个键，即浏览器会持续触发keydown和keypress事件，直到用户松开手为止。
+    // console.log(e.repeat)
+
+    // KeyboardEvent.getModifierState()方法返回一个布尔值，表示是否按下或激活指定的功能键。它的常用参数如下。
+    // console.log(e.getModifierState('Control'))
+    if (e.getModifierState('Control')) {
+      console.log('按了 Control 键')
+    } else {
+      console.log('没有按 Control 健')
+    }
+  }
+
+  document.body.addEventListener('keydown', showChar, false);
+
+
+</script>
