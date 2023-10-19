@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+    body {
+
+
+      margin: 0;
+      padding: 0;
+    }
+
+    #a {
+      height: 100vh;
+       border: 1px solid red;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="a"></div>
+</body>
+</html>
+<script>
+
+
+  a.addEventListener('touchstart', rotate);
+  a.addEventListener('touchmove', rotate);
+  a.addEventListener('touchend', rotate);
+
+  function rotate(e) {
+    var touch = e.changedTouches.item(0);
+    e.preventDefault();
+
+    src.style.width = touch.radiusX * 2 + 'px';
+    src.style.height = touch.radiusY * 2 + 'px';
+    src.style.transform = 'rotate(' + touch.rotationAngle + 'deg)';
+  };
+
+
+</script>

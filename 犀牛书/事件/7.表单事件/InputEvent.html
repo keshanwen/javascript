@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" id="myInput">
+</body>
+</html>
+<script>
+
+
+  var input = document.getElementById('myInput');
+  input.addEventListener('input', myFunction, false);
+
+  function myFunction(e) {
+    // InputEvent.data属性返回一个字符串，表示变动的内容。
+    // console.log(e.data);
+    // InputEvent.inputType属性返回一个字符串，表示字符串发生变更的类型
+    // console.log(e.inputType)
+    // InputEvent.dataTransfer属性返回一个 DataTransfer 实例。该属性只在文本框接受粘贴内容（insertFromPaste）或拖拽内容（insertFromDrop）时才有效。
+    console.log(e.dataTransfer)
+  }
+
+</script>

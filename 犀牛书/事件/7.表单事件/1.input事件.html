@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- <select id="mySelect">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+  </select> -->
+  <input type="text"  id="mySelect">
+</body>
+</html>
+<script>
+  /*
+    input事件当<input>、<select>、<textarea>的值发生变化时触发。
+      对于复选框（<input type=checkbox>）或单选框（<input type=radio>），
+      用户改变选项时，也会触发这个事件。
+      另外，对于打开contenteditable属性的元素，只要值发生变化，也会触发input事件。
+  */
+
+  /*
+    该事件跟change事件很像，不同之处在于input事件在元素的值发生变化后立即发生，而change在元素失去焦点时发生，
+    而内容此时可能已经变化多次。也就是说，如果有连续变化，input事件会触发多次，而change事件只在失去焦点时触发一次。
+
+  */
+
+  function inputHandler(e) {
+    console.log(e.target.value)
+  }
+
+  var mySelect = document.querySelector('#mySelect');
+  mySelect.addEventListener('input', inputHandler);
+
+
+  mySelect.addEventListener('change', (e) => {
+     console.log(e.target.value, 'change~~~~~~')
+  });
+</script>
