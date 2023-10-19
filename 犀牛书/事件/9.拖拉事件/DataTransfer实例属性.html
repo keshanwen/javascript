@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  .dropzone {
+    height: 40px;
+    border: 1px solid red;
+  }
+</style>
+
+<body>
+  <div class="dropzone">
+    <div id="draggable" draggable="true">
+      该节点可拖拉
+    </div>
+  </div>
+  <div class="dropzone"></div>
+  <div class="dropzone"></div>
+  <div class="dropzone"></div>
+</body>
+
+</html>
+<script>
+
+  // 被拖拉节点
+  var dragged;
+
+  document.addEventListener('dragstart', function (event) {
+    // 保存被拖拉节点
+    dragged = event.target;
+    /*
+
+      DataTransfer.effectAllowed属性设置本次拖拉中允许的效果
+
+      这个属性与dropEffect属性是同一件事的两个方面。前者设置被拖拉的节点允许的效果，后者设置接受拖拉的区域的效果，它们往往配合使用。
+
+      dragstart事件的监听函数，可以用来设置这个属性。其他事件的监听函数里面设置这个属性是无效的。
+
+    */
+    event.dataTransfer.effectAllowed = 'move';
+    // 被拖拉节点的背景色变透明
+    event.target.style.opacity = 0.5;
+  }, false);
+
+  document.addEventListener('dragend', function (event) {
+    // 被拖拉节点的背景色恢复正常
+    event.target.style.opacity = '';
+  }, false);
+
+  document.addEventListener('dragover', function (event) {
+    // 防止拖拉效果被重置，允许被拖拉的节点放入目标节点
+    event.preventDefault();
+  /*
+    DataTransfer.dropEffect属性用来设置放下（drop）被拖拉节点时的效果，会影响到拖拉经过相关区域时鼠标的形状。它可能取下面的值。
+
+    copy：复制被拖拉的节点
+    move：移动被拖拉的节点
+    link：创建指向被拖拉的节点的链接
+    none：无法放下被拖拉的节点
+
+    dropEffect属性一般在dragenter和dragover事件的监听函数中设置，
+    对于dragstart、drag、dragleave这三个事件，该属性不起作用。
+    因为该属性只对接受被拖拉的节点的区域有效，对被拖拉的节点本身是无效的。进入目标区域后，拖拉行为会初始化成设定的效果。
+
+    */
+    // event.dataTransfer.dropEffect = 'move';
+  }, false);
+
+  document.addEventListener('dragenter', function (event) {
+    // 目标节点的背景色变紫色
+    // 由于该事件会冒泡，所以要过滤节点
+    if (event.target.className === 'dropzone') {
+      event.target.style.background = 'purple';
+    }
+  }, false);
+
+  document.addEventListener('dragleave', function (event) {
+    // 目标节点的背景色恢复原样
+    if (event.target.className === 'dropzone') {
+      event.target.style.background = '';
+    }
+  }, false);
+
+  document.addEventListener('drop', function (event) {
+    console.log(event)
+    // 防止事件默认行为（比如某些元素节点上可以打开链接），
+    event.preventDefault();
+    if (event.target.className === 'dropzone') {
+      // 恢复目标节点背景色
+      event.target.style.background = '';
+      // 将被拖拉节点插入目标节点
+      dragged.parentNode.removeChild(dragged);
+      event.target.appendChild(dragged);
+    }
+  }, false);
+
+
+
+</script>

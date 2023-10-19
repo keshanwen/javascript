@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="output" style="min-height: 200px;border: 1px solid black;">
+   文件拖拉到这里
+  </div>
+</body>
+</html>
+<script>
+
+  var div = document.getElementById('output');
+
+  div.addEventListener("dragenter", function (event) {
+    div.textContent = '';
+    event.stopPropagation();
+    event.preventDefault();
+  }, false);
+
+  div.addEventListener("dragover", function (event) {
+    event.stopPropagation();
+    event.preventDefault();
+  }, false);
+
+/*   div.addEventListener("drop", function (event) {
+    event.stopPropagation();
+    event.preventDefault();
+    var files = event.dataTransfer.files;
+    for (var i = 0; i < files.length; i++) {
+      div.textContent += files[i].name + ' ' + files[i].size + '字节\n';
+    }
+  }, false); */
+
+  div.addEventListener('drop', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      var fileList = e.dataTransfer.files;
+      if (fileList.length > 0) {
+        var file = fileList[0];
+        var reader = new FileReader();
+        reader.onloadend = function (e) {
+          if (e.target.readyState === FileReader.DONE) {
+            var content = reader.result;
+            div.innerHTML = 'File: ' + file.name + '\n\n' + content;
+          }
+        }
+        reader.readAsBinaryString(file);
+        // reader.readAsText(file,"GB2312");
+      }
+    });
+
+
+</script>
