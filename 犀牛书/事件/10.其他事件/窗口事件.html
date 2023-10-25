@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+    body {
+      height: 3000px;
+    }
+  </style>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+/*
+scroll事件在文档或文档元素滚动时触发，主要出现在用户拖动滚动条
+该事件会连续地大量触发，所以它的监听函数之中不应该有非常耗费计算的操作。
+推荐的做法是使用requestAnimationFrame或setTimeout控制该事件的触发频率，然后可以结合customEvent抛出一个新事件。
+*/
+
+/* (function () {
+    var throttle = function (type, name, obj) {
+      var obj = obj || window;
+      var running = false;
+      var func = function () {
+        if (running) { return; }
+        running = true;
+        requestAnimationFrame(function () {
+          obj.dispatchEvent(new CustomEvent(name));
+          running = false;
+        });
+      };
+      obj.addEventListener(type, func);
+    };
+
+    // 将 scroll 事件转为 optimizedScroll 事件
+    throttle('scroll', 'optimizedScroll');
+  })(); */
+
+  window.addEventListener('optimizedScroll', function () {
+    console.log('Resource conscious scroll callback!');
+  });
+
+/*   (function () {
+      window.addEventListener('scroll', scrollThrottler, false);
+
+      var scrollTimeout;
+      function scrollThrottler() {
+        if (!scrollTimeout) {
+          scrollTimeout = setTimeout(function () {
+            scrollTimeout = null;
+            actualScrollHandler();
+          }, 66);
+        }
+      }
+
+      function actualScrollHandler() {
+        // ...
+        console.log('actualScrollHandler')
+      }
+    }());
+ */
+
+/*  function throttle(fn, wait) {
+    var time = Date.now();
+    return function () {
+      if ((time + wait - Date.now()) < 0) {
+        fn();
+        time = Date.now();
+      }
+    }
+  }
+
+  const callback = () => {
+    console.log('scroll~~~~')
+  }
+
+  window.addEventListener('scroll', throttle(callback, 1000));
+ */
+/*
+throttle是“节流”，确保一段时间内只执行一次，而debounce是“防抖”，要连续操作结束后再执行。
+以网页滚动为例，debounce要等到用户停止滚动后才执行，throttle则是如果用户一直在滚动网页，那么在滚动过程中还是会执行。
+*/
+
+  // resize事件在改变浏览器窗口大小时触发，主要发生在window对象上面。
+
+ /*  var resizeMethod = function () {
+      if (document.body.clientWidth < 768) {
+        console.log('移动设备的视口');
+      }
+      console.log('resize~~~~~')
+    };
+
+  window.addEventListener('resize', resizeMethod, true); */
+  //  该事件也会连续地大量触发，所以最好像上面的scroll事件一样，通过throttle函数控制事件触发频率。
+
+  // fullscreenchange事件在进入或退出全屏状态时触发，该事件发生在document对象上面。
+  document.addEventListener('fullscreenchange', function (event) {
+    console.log(document.fullscreenElement);
+    console.log('fullscreenchange')
+  });
+
+</script>

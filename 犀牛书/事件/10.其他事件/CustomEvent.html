@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+
+  /* var event = new CustomEvent('build', { 'detail': 'hello' });
+
+  function eventHandler(e) {
+    console.log(e.detail);
+  }
+
+  document.body.addEventListener('build', function (e) {
+    console.log(e.detail);
+  });
+
+  document.body.dispatchEvent(event); */
+
+  var myEvent = new CustomEvent('myevent', {
+      detail: {
+        foo: 'bar'
+      },
+      bubbles: true,
+      cancelable: false
+    });
+
+    document.body.addEventListener('myevent', function (event) {
+      console.log('Hello ' + event.detail.foo);
+    });
+
+    document.body.dispatchEvent(myEvent);
+
+
+</script>

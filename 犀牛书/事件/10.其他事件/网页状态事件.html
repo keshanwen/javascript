@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+/*
+  网页下载并解析完成以后，浏览器就会在document对象上触发 DOMContentLoaded 事件。
+  这时，仅仅完成了网页的解析（整张页面的 DOM 生成了），所有外部资源（样式表、脚本、iframe 等等）可能还没有下载结束。
+  也就是说，这个事件比load事件，发生时间早得多。
+*/
+  // document.addEventListener('DOMContentLoaded', function (event) {
+  //   console.log('DOM生成');
+  // });
+
+  // document.addEventListener('DOMContentLoaded', function (event) {
+  //     console.log('DOM 生成');
+  //   });
+
+  //   // 这段代码会推迟触发 DOMContentLoaded 事件
+  //   for (var i = 0; i < 1000000000; i++) {
+  //     // ...
+  //   }
+
+/*
+  readystatechange事件当 Document 对象和 XMLHttpRequest 对象的readyState属性发生变化时触发。
+  document.readyState有三个可能的值：loading（网页正在加载）、interactive（网页已经解析完成，但是外部资源仍然处在加载状态）和complete（网页和所有外部资源已经结束加载，load事件即将触发）。
+*/
+  document.onreadystatechange = function () {
+    if (document.readyState === 'interactive') {
+      // ...
+      console.log('onReadystatechange~~~~~~~')
+    }
+  }
+</script>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+
+
+  // pageshow事件在页面加载时触发，包括第一次加载和从缓存加载两种情况。
+  // 这两个事件只在浏览器的history对象发生变化时触发，跟网页是否可见没有关系。(pagehide)
+/*   window.addEventListener('pageshow', function (event) {
+    if (event.persisted) {
+      // ...
+      console.log('page Show 从缓存中获取')
+    } else {
+      console.log('page Show 页面第一次加载')
+    }
+  }); */
+
+
+// popstate事件在浏览器的history对象的当前记录发生显式切换时触发
+/*
+  popstate事件在浏览器的history对象的当前记录发生显式切换时触发。
+  注意，调用history.pushState()或history.replaceState()，并不会触发popstate事件。
+  该事件只在用户在history记录之间显式切换时触发，
+  比如鼠标点击“后退/前进”按钮，或者在脚本中调用history.back()、history.forward()、history.go()时触发
+*/
+  // window.onpopstate = function (event) {
+  //   console.log('state: ' + event.state);
+  // };
+  // history.pushState({ page: 1 }, 'title 1', '?page=1');
+  // history.pushState({ page: 2 }, 'title 2', '?page=2');
+  // history.replaceState({ page: 3 }, 'title 3', '?page=3');
+  // history.back(); // state: {"page":1}
+  // history.back(); // state: null
+  // history.go(2);  // state: {"page":3}
+
+// hashchange事件在 URL 的 hash 部分（即#号后面的部分，包括#号）发生变化时触发。该事件一般在window对象上监听。
+
+ // hashchange的事件实例具有两个特有属性：oldURL属性和newURL属性，分别表示变化前后的完整 URL。
+
+ // URL 是 http://www.example.com/
+  window.addEventListener('hashchange', myFunction);
+
+  function myFunction(e) {
+    console.log(e.oldURL);
+    console.log(e.newURL);
+  }
+
+  location.hash = 'part2';
+  // http://www.example.com/
+  // http://www.example.com/#part2
+</script>

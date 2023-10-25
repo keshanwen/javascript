@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+ hello wrold
+</body>
+</html>
+<script>
+
+/* cut：将选中的内容从文档中移除，加入剪贴板时触发。
+copy：进行复制动作时触发。
+paste：剪贴板内容粘贴到文档后触发 */
+
+  document.addEventListener('copy', function (e) {
+    e.clipboardData.setData('text/plain', 'Hello, world!');
+    e.clipboardData.setData('text/html', '<b>Hello, world!</b>');
+    e.preventDefault();
+
+    console.log('copy~~~~~~~')
+  });
+
+</script>

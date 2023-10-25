@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+  // beforeunload事件在窗口、文档、各种资源将要卸载前触发。它可以用来防止用户不小心卸载资源。
+/*   window.addEventListener('beforeunload', function (e) {
+    var confirmationMessage = '确认关闭窗口？';
+
+    e.returnValue = confirmationMessage;
+    return confirmationMessage;
+  });
+ */
+
+ // unload事件在窗口关闭或者document对象将要卸载时触发。它的触发顺序排在beforeunload、pagehide事件后面。 该事件可以用pagehide代替
+/*  window.addEventListener('unload', function (event) {
+    console.log('文档将要卸载');
+  }); */
+
+
+  // load事件在页面或某个资源加载成功时触发。注意，页面或资源从浏览器缓存加载，并不会触发load事件。 页面的load事件也可以用pageshow事件代替。
+  window.addEventListener('load', function (event) {
+    console.log('所有资源都加载完成');
+  });
+
+
+</script>
